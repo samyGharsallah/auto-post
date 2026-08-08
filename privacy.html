@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — auto-post</title>
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <img src="icon.png" alt="">
+    <div>
+      <h1>Privacy Policy</h1>
+      <p>auto-post</p>
+    </div>
+  </header>
+
+  <p class="updated">Last updated: 9 August 2026</p>
+
+  <h2>Summary</h2>
+  <p>
+    auto-post runs entirely on the operator's own computer. It has no server, no database and
+    no analytics. It does not collect personal data from anyone, and it has no users other
+    than the person running it.
+  </p>
+
+  <h2>What the software accesses</h2>
+  <p>
+    When the operator authorizes an account, the destination platform issues an access token.
+    The software uses that token for two things only:
+  </p>
+  <ul>
+    <li>reading the identity of the authorized account — its id and display name — so it can
+        confirm that a video is about to be published to the intended account;</li>
+    <li>uploading a video file together with its title, description and publication settings.</li>
+  </ul>
+  <p>
+    The software does not read the operator's followers, messages, comments, contacts, watch
+    history or any other personal information, and it never accesses data belonging to other
+    users of any platform.
+  </p>
+
+  <h2>Where data is stored</h2>
+  <p>
+    Access tokens are written to files inside the software's own folder on the operator's
+    computer (<code>auth/tokens/</code>). Video files and their metadata stay on that same
+    computer. Nothing is uploaded anywhere except to the platform the operator explicitly
+    chose to publish to.
+  </p>
+
+  <h2>What is shared with third parties</h2>
+  <p>
+    Nothing. There is no third-party recipient. The only outbound network requests the
+    software makes are to the official APIs of the destination platforms — YouTube, Facebook
+    and TikTok — and they contain only the video and metadata being published.
+  </p>
+
+  <h2>Retention and deletion</h2>
+  <p>
+    Tokens remain on the operator's computer until they are deleted or expire. Deleting the
+    files in <code>auth/tokens/</code> removes them permanently. Authorization can also be
+    revoked at any time from each platform's own security settings, which invalidates the
+    token immediately.
+  </p>
+
+  <h2>Cookies and tracking</h2>
+  <p>
+    This website is a set of static pages. It sets no cookies, runs no analytics and embeds
+    no third-party scripts or trackers.
+  </p>
+
+  <h2>Children</h2>
+  <p>The software is not directed at children and collects no data from anyone.</p>
+
+  <h2>Changes</h2>
+  <p>
+    This policy may be updated as the software changes. The date at the top of this page
+    reflects the most recent revision.
+  </p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy: <a href="mailto:samigharsallah01@gmail.com">samigharsallah01@gmail.com</a></p>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="terms.html">Terms of Service</a>
+  </nav>
+</main>
+</body>
+</html>

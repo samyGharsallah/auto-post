@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Authorization code — auto-post</title>
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="style.css">
+<style>
+  .code {
+    display: block;
+    width: 100%;
+    padding: 0.9rem 1rem;
+    margin: 1rem 0 0.75rem;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: 0.95rem;
+    word-break: break-all;
+    background: color-mix(in srgb, var(--fg) 6%, transparent);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--fg);
+  }
+  button {
+    padding: 0.55rem 1.1rem;
+    font: inherit;
+    color: #fff;
+    background: var(--accent);
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .error { color: #c0392b; }
+  @media (prefers-color-scheme: dark) { .error { color: #ff7b72; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="icon.png" alt="">
+    <div>
+      <h1>Authorization code</h1>
+      <p>Copy this code back into the terminal.</p>
+    </div>
+  </header>
+
+  <div id="out"></div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </nav>
+</main>
+
+<script>
+  // TikTok redirects here with ?code=... The code is shown so it can be pasted
+  // into the CLI. Nothing is sent anywhere from this page.
+  const params = new URLSearchParams(location.search);
+  const code = params.get('code');
+  const error = params.get('error_description') || params.get('error');
+  const out = document.getElementById('out');
+
+  if (code) {
+    const box = document.createElement('textarea');
+    box.className = 'code';
+    box.rows = 3;
+    box.readOnly = true;
+    box.value = code;
+
+    const button = document.createElement('button');
+    button.textContent = 'Copy';
+    button.addEventListener('click', async () => {
+      box.select();
+      try {
+        await navigator.clipboard.writeText(code);
+      } catch {
+        document.execCommand('copy');
+      }
+      button.textContent = 'Copied';
+      setTimeout(() => { button.textContent = 'Copy'; }, 1500);
+    });
+
+    out.append(box, button);
+  } else {
+    const p = document.createElement('p');
+    p.className = 'error';
+    p.textContent = error
+      ? `Authorization failed: ${error}`
+      : 'No authorization code in this URL. Start the flow again from the terminal.';
+    out.append(p);
+  }
+</script>
+</body>
+</html>
